@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=MonteCarlo&family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Indie+Flower&family=MonteCarlo&family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Indie+Flower&family=MonteCarlo&family=Pacifico&family=Slabo+27px&display=swap');
+    *,
+    *::before,
+    *::after{
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+    }
+    .main{
+        width:100vw;
+        height:100vh;
+        background-color: rgba(0, 0, 0, 0.418);
+        display: grid;
+        place-items: center;
+    }
+    .music{
+        width: 90vw;
+        height: 90vh;
+        background-color: antiquewhite;
+
+        border-radius: 2rem;
+        box-shadow: 0 1.2rem 3rem 0.5rem rgb(48, 43, 43);
+        padding: 3rem;
+        text-align: center;
+    }
+    .music #head{
+        
+        letter-spacing:0.3vw;
+        word-spacing:0.5vw;
+        font-family:'Slabo 27px', serif;
+        color:rgb(255, 0, 76);
+        font-size: 6.5vw;
+        font-weight:100;
+        text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.5);
+    }
+    .music #heading{
+        color: #cccaca;
+        text-transform: capitalize;
+        letter-spacing: 0.1vh;
+        font-size: 5vw;
+        margin-bottom: 4vh;
+        font-weight: 300;
+    }
+    .img2{
+        width:50vw;
+        height: 40vh;
+        margin: auto;
+    }
+    img{
+        width:50vw;
+        height: 40vh;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow:0 1.2rem 3rem 0.5rem rgba(0,0,0,0.4);
+    }
+    .tools .fas{
+        color:orangered;
+        font-size:6vw;
+        cursor:pointer;
+        filter:drop-shadow(0 2rem 3rem 1rem rgba(0,0,0,0.4));
+        transition:0.5s all ease-in-out;
+    }
+    .tools{
+        width:65vw;
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        margin-top:4vh;
+
+        
+    }
+    .tools .main_button{
+        width:18vw;
+        height:10vh;
+        border-radius: 50%;
+        background-color:lightcoral;
+        color:white;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        font-size:4vw;
+    }
+    .tools .fa-play:hover{
+        color:aquamarine;
+        transform:scale(1.1);
+        box-shadow:0 0.2rem 1rem 0.2rem aqua ;
+    }
+    .tools .fa-forward:hover{
+        color:aquamarine;
+        transform:scale(1.2);
+        
+
+    }
+    .tools .fa-backward:hover{
+        color:aquamarine;
+        transform:scale(1.2);
+        
+    }
+    .anime{
+        animation: rotatePlayer 3s  infinite ;
+    }
+    @keyframes rotatePlayer {
+        from{
+            transform:rotate(0deg);
+        }
+        to{
+            transform:rotate(360deg);
+        }
+        
+    }
+    .slider_container {
+        width:30vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top:2vh;
+    }
+    .seek_slider,.volume_slider{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        height: 5px;
+        background: black;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+    .seek_slider{
+        position: relative;
+        left:30vw;
+    }
+    .volume_slider{
+        position: relative;
+        top:4vh;
+        right:8vw;
+    }
+    .seek_slider::-webkit-slider-thumb,.volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    display:flex;
+    justify-content: center;
+    -moz-appearance: none;
+    appearance:none;
+    width:15px;
+    height:15px;
+    background:aquamarine;
+    cursor:pointer;
+    border-radius:50%;
+    opacity:1;
+    }
+    .fa-volume-down{
+        position:relative;
+        top:4vh;
+        right:10vw;
+    }
+    .fa-volume-up{
+        position:relative;
+        top:4vh;
+        right:6.7vw;
+    }
+
+    .seek_slider:hover,.volume_slider:hover {
+    opacity: 1.0;
+    background:rgb(42, 136, 165);
+    }
+    
+    .seek_slider {
+    width: 50vw;
+    }
+    .volume_slider{
+        width:25vw;
+    }
+    .current-time{
+        position:relative;
+        left:28vw;
+    }
+    .total-duration {
+        position:relative;
+        left:33vw;
+    }
+</style>
+</head>
+<body>
+    <div class="main">
+        <div class="music">
+            <h1 id="head">Ranjha - Shershaah</h1>
+             
+             <h3 id="heading">B Praak, Jasleen Royal</h3>
+            <div class="img2">
+                <img src="images/Ranjha - Shershaah.jpg">
+            </div>
+            <audio src="audio/Ranjha - Shershaah.mp3" ></audio>
+            <div class="tools">
+                <i class="fas fa-backward" id="back" title="backward"></i>
+
+                <i class="fas fa-play main_button" id="play" title="play"></i>
+                <i class="fas fa-forward"  id="forward" title="forward"></i>
+            </div>
+            <div class="slider_container">
+                <div class="current-time">00:00</div>
+                <input type="range" min="1" max="100"
+                  value="0" class="seek_slider" onchange="seekTo()">
+                <div class="total-duration">00:00</div>
+                <div class="slider_container">
+                    <i class="fa fa-volume-down"></i>
+                    <input type="range" min="1" max="100"
+                      value="30" class="volume_slider" onchange="setVolume()">
+                    <i class="fa fa-volume-up"></i>
+                  </div>
+                </div>
+              </div>
+          
+        </div>
+        
+        
+
+    </div>
+    <script>
+        const music=document.querySelector("audio");
+        const img=document.querySelector("img");
+         const play=document.getElementById("play");
+         const head=document.getElementById("head");
+         const heading=document.getElementById("heading");
+         const prev=document.getElementById("back");
+         const forward=document.getElementById("forward");
+         let seek_slider = document.querySelector(".seek_slider");
+         let volume_slider = document.querySelector(".volume_slider");
+         let total_duration = document.querySelector(".total-duration");
+         let curr_time = document.querySelector(".current-time");
+         const songs=[{
+             name:"Ranjha - Shershaah",
+             head:"Ranjha - Shershaah",
+             heading:"B Praak, Jasleen Royal",
+         },
+         {
+            name:"sakhiyan-2.0",
+             head:"Sakhiyan",
+             heading:"Maninder Buttar, Zara Khan",
+
+         },
+         {
+            name:"Brown Munde",
+             head:"Brown Munde",
+             heading:"AP Dhillon",
+
+         },
+
+        ];
+         let isplaying=false;
+         playmusic=() => {
+             music.play();
+             isplaying=true;
+             play.classList.replace("fa-play","fa-pause");
+             setVolume();
+             
+         };
+         stopmusic=() => {
+             music.pause();
+             isplaying=false;
+             play.classList.replace("fa-pause","fa-play");
+             
+             
+         };
+         play.addEventListener('click',() =>{
+             if(isplaying==false)
+             {
+                  playmusic();
+                  img.classList.add("anime");
+                  
+             }
+             else{
+                 stopmusic();
+                 img.classList.remove("anime");
+             }
+         });
+         //changing the data
+         const loadSong =(songs)=>{
+             head.textContent=songs.head;
+             heading.textContent=songs.heading;
+             music.src= "audio/"+songs.name + ".mp3";
+             img.src="images/"+songs.name+".jpg"; 
+         };
+         let songindex=0;
+         const nextsong=() => {
+             loadSong(songs[(++songindex)%songs.length]);
+             img.classList.remove("anime");
+             play.classList.replace("fa-pause","fa-play");
+             playmusic();
+             resetValues();
+             seekUpdate();
+
+         };
+         const prevsong=()=>{
+            songindex--;
+             if(songindex<0)
+             {
+
+                 songindex=songs.length-1;
+             }
+             
+             loadSong(songs[(songindex)%songs.length]);
+             play.classList.replace("fa-pause","fa-play");
+             img.classList.remove("anime");
+             playmusic(); 
+             resetValues();
+             seekUpdate(); 
+            
+         };
+         function setVolume() {
+             music.volume = volume_slider.value / 100;
+             }
+         function seekTo(){
+             let seekto = music.duration * (seek_slider.value / 100);
+             music.currentTime=seekto;
+            }
+         updateTimer=setInterval(seekUpdate, 1000);
+
+         function clear(){
+            clearInterval(updateTimer);
+             resetValues();
+
+         }
+         function resetValues() {
+          curr_time.textContent = "00:00";
+           total_duration.textContent = "00:00";
+           seek_slider.value = 0;
+           }
+        function  seekUpdate(){
+        let seekPosition = 0;
+    
+     //Check if the current track duration is a legible number
+            if (!isNaN(music.duration)) {
+                let seekPosition = music.currentTime * (100 / music.duration);
+                seek_slider.value = seekPosition;
+            
+                // Calculate the time left and the total duration
+                let currentMinutes = Math.floor(music.currentTime / 60);
+                let currentSeconds = Math.floor(music.currentTime - currentMinutes * 60);
+                let durationMinutes = Math.floor(music.duration / 60);
+                let durationSeconds = Math.floor(music.duration - durationMinutes * 60);
+            
+                // Add a zero to the single digit time values
+                if (currentSeconds < 10) { currentSeconds = "0" + currentSeconds; }
+                if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+                if (currentMinutes < 10) { currentMinutes = "0" + currentMinutes; }
+                if (durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+            
+                // Display the updated duration
+                curr_time.textContent = currentMinutes + ":" + currentSeconds;
+                total_duration.textContent = durationMinutes + ":" + durationSeconds;
+            }
+            }
+         forward.addEventListener("click" ,nextsong);
+         prev.addEventListener("click" ,prevsong);
+         
+
+    </script>
+</body>
+</html>
